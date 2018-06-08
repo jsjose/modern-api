@@ -1,8 +1,14 @@
 const hapi = require('hapi');
+const mongoose = require('mongoose');
 
 const server = hapi.server({
 	port: 4000,
 	host: 'localhost'
+});
+
+mongoose.connect('mongodb://jsjose:perdido04@ds247430.mlab.com:47430/powerful-api-jsjose');
+mongoose.connection.once('open', () => {
+	console.log('connected to database');
 });
 
 const init = async () => {
